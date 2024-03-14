@@ -16,9 +16,9 @@
       <%= link_to t.user.name, user_path(t.user.id) %>
       <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
       <%= t.user.email %> 
-      <p>起床時間 <%= t.wake.strftime( "%H:%M") %></p>
+      <p>起床時間 <%= t.wake.strftime( "%H:%M") if t.wake.present?%></p>
       
-      <p>就寝時間 <%= t.sleep.strftime( "%H:%M") %></p>
+      <p>就寝時間 <%= t.sleep.strftime( "%H:%M")if t.sleep.present? %></p>
       
       <p>布団出るまでにかかった時間<%= t.time %>分</p>
       

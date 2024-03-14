@@ -57,11 +57,7 @@ class OhayosController < ApplicationController
     else
       redirect_to :action => "new"
     end
-    if @ohayo.update(ohayo_parameter)
-      redirect_to ohayos_path, notice: "編集しました"
-    else
-      render 'edit'
-    end
+    
   end
 
   
@@ -69,7 +65,7 @@ class OhayosController < ApplicationController
     ohayo = Ohayo.find(params[:id])
     ohayo.destroy
     redirect_to action: :index
-    redirect_to ohayos_path, notice:"削除しました"
+ 
   end
 
   def record
