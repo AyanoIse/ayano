@@ -39,9 +39,9 @@
 
   <% ohayos.each do |ohayo| %>
     <div>
-    <p>起床時間 <%= ohayo.wake.strftime( "%H:%M") %></p>
+    <p>起床時間 <%= ohayo.wake.strftime( "%H:%M")if ohayo.wake.present? %></p>
       
-    <p>就寝時間 <%= ohayo.sleep.strftime( "%H:%M") %></p>
+    <p>就寝時間 <%= ohayo.sleep.strftime( "%H:%M") if ohayo.sleep.present? %></p>
     
     <p>布団出るまでにかかった時間<%= ohayo.time %>分</p>
     
