@@ -45,11 +45,12 @@ ActiveRecord::Schema.define(version: 2024_03_09_153837) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "ohayo_id", null: false
+    t.integer "tweet_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tweet_id"
     t.index ["ohayo_id"], name: "index_likes_on_ohayo_id"
+    t.index ["tweet_id"], name: "index_likes_on_tweet_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -96,5 +97,6 @@ ActiveRecord::Schema.define(version: 2024_03_09_153837) do
   add_foreign_key "letters", "tweets"
   add_foreign_key "letters", "users"
   add_foreign_key "likes", "ohayos"
+  add_foreign_key "likes", "tweets"
   add_foreign_key "likes", "users"
 end
