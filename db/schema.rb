@@ -18,9 +18,7 @@ ActiveRecord::Schema.define(version: 2024_03_14_115920) do
     t.integer "ohayo_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tweet_id"
     t.index ["ohayo_id"], name: "index_comments_on_ohayo_id"
-    t.index ["tweet_id"], name: "index_comments_on_tweet_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -90,7 +88,6 @@ ActiveRecord::Schema.define(version: 2024_03_14_115920) do
   end
 
   add_foreign_key "comments", "ohayos"
-  add_foreign_key "comments", "tweets"
   add_foreign_key "comments", "users"
   add_foreign_key "goods", "tweets"
   add_foreign_key "goods", "users"
