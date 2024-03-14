@@ -1,0 +1,62 @@
+<h1>Asakatsu</h1>
+<h3>投稿詳細</h3>
+<div class="ohayo">
+  <p><%= @ohayo.wake %></p>
+  <p><%= @ohayo.sleep %></p>
+  <p><%= @ohayo.time %></p>
+  <p><%= @ohayo.feel %></p>
+  <p><%= @ohayo.what %></p>
+  <p><%= @ohayo.likes.count %>
+  <p><%= @ohayo.created_at %></p>
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@ohayo) %>
+        <%= link_to ohayo_like_path(@ohayo), method: :delete do %>
+          <p>いいねを取り消す</p><%= @ohayo.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to ohayo_likes_path(@ohayo), method: :post do %>
+          <p>いいね</p><%= @ohayo.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>いいねの数 = </p><%= @ohayo.likes.count %>
+    <% end %>
+  <%= link_to "編集する", edit_ohayo_path(@ohayo.id) %>
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @ohayo.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@ohayo, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+
+
+<%= link_to 'Edit', edit_ohayo_path(@ohayo) %> |
+<%= link_to 'Back', ohayos_path %>
+
+
+<%= link_to "投稿一覧に戻る", ohayos_path %>
+<%= link_to "編集する", edit_ohayo_path(@ohayo.id) %>

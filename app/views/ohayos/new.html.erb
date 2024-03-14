@@ -1,0 +1,81 @@
+<div class="explain2">
+ <%= image_tag 'ohayo.new.jpg', class:'ohayo-image' %>
+  <div class="new2">
+   <br>
+   <br>
+   <h3>|新規投稿ページ|</h3>
+   <br>
+   <br>
+   起きた時間や朝にやったことなど
+   <br>
+
+   投稿して記録しましょう
+  </div>
+</div>
+
+<div class="box3">
+ <%= form_for @ohayo do |f| %>
+  <br>
+  <br>
+  <br>
+  <div class="time">
+  <%= f.label :入力日時 %>
+  <%= f.datetime_select :start_time %>
+  </div>
+
+
+  <div class="field">
+  <br>
+  <br>
+  <%= f.label :起床時間 %>
+  <%= f.time_select :wake, class: 'form-control date-picker' %>
+  </div>
+
+
+  <div class="field">
+  <br>
+  <br>
+  <%= f.label :起床後の気分 %>
+  <%= f.select :feel,  
+  [["すっきり", "すっきり"], 
+  ["普通", "普通"], 
+  ["眠い", "眠い"]], include_blank: "選択して下さい" %>
+  </div>
+  
+
+
+  <div class="field">
+    <br>
+    <br>
+    <%= f.label :就寝時間  %>
+    <%= f.time_select :sleep, class: 'form-control date-picker' %>
+  </div>
+
+  
+  <div class="field">
+    <br>
+    <br>
+    <%= f.label :布団から出るまでの時間（分） %>
+    <%= f.number_field :time, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <br>
+    <br>
+    <%= f.label :起きてやったこと  %>
+    <%= f.text_area :what, :size => "30x8" %>
+  </div>
+
+ 
+ <div class="link3">
+  <br>
+  <br>
+  <%= f.submit "投稿する" %>
+ <% end %>
+ </div>
+</div>
+<div class="link4">
+ <br>
+ <br>
+ <%= link_to "早起き投稿一覧に戻る", ohayos_path %>
+</div>

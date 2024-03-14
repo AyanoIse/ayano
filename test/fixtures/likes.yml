@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ohayo: one
+  user: one
+
+two:
+  ohayo: two
+  user: two

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wake: 2024-02-07 00:00:31
+  sleep: 1
+  time: 1
+  feel: MyString
+  what: MyText
+
+two:
+  wake: 2024-02-07 00:00:31
+  sleep: 1
+  time: 1
+  feel: MyString
+  what: MyText

@@ -1,0 +1,21 @@
+<%= form_for @ohayo do |f| %>
+    <%= f.label :起床時間 %>
+    <%= f.datetime_field :wake, :size => 140 %> 
+    <%= f.label :起床後の気分 %>
+    <%= f.select :feel,  
+    [["すっきり", "すっきり"], 
+    ["普通", "普通"], 
+    ["眠い", "眠い"]], include_blank: "選択して下さい" %>
+    <%= f.label :睡眠時間  %>
+    <%= f.number_field :sleep, :size => 10 %>
+    <%= f.label :布団から出るまでの時間 %>
+    <%= f.number_field :time, :size => 10 %>
+    <%= f.label :起きてやったこと  %>
+    <%= f.text_area :what, :size => "30x2" %>
+
+   
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time %>
+
+    <%= f.submit "編集する" %>
+  <% end %>

@@ -1,0 +1,78 @@
+<div class="name">
+ ｜早起き投稿一覧｜
+</div>
+  
+
+<%= link_to "新規投稿ページへ", new_ohayo_path %>
+
+
+<div class="ohayos-container">
+  <% if user_signed_in? %>
+    <%= link_to "マイページへ", user_path(current_user.id) %>
+  <% end %>
+
+  <% @ohayos.each do |t| %>
+    <div class="ohayo">
+      <%= link_to t.user.name, user_path(t.user.id) %>
+      <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
+      <%= t.user.email %> 
+      <p>起床時間 <%= t.wake.strftime( "%H:%M") %></p>
+      
+      <p>就寝時間 <%= t.sleep.strftime( "%H:%M") %></p>
+      
+      <p>布団出るまでにかかった時間<%= t.time %>分</p>
+      
+      <p>今日の気分→<%= t.feel %></p>
+      
+      <p>何したか→<%= t.what %></p>
+      
+      <%= t.likes.count %>
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+          <%= button_to ohayo_like_path(id: t.id, ohayo_id: t.id), method: :delete do %>
+              <p>いいねを取り消す</p><%= t.likes.count %>
+          <% end %>
+        <% else %>
+          <%= button_to ohayo_likes_path(id: t.id, ohayo_id: t.id), method: :post do %>
+              <p>いいね</p><%= t.likes.count %>
+          <% end %>
+        <% end %>
+      <% else %>
+       <p>いいねの数 = </p><%= t.likes.count %>
+      <% end %>
+     
+      <%= link_to "詳細へ", ohayo_path(t.id) %>
+      
+  
+
+        <div class="comment-wrapper">
+            <p>コメント一覧</p>
+            <% @comments.each do |c| %>
+              <div>
+                <%= c.user.email unless c.user.blank? %>
+                <br>
+                <%= c.content %>
+              </div>
+                <br>
+            <% end %>
+
+            <% if user_signed_in? %>
+              <%= form_with(model: [@ohayo, @comment], local: true) do |f| %>
+                <%= f.text_area :content %>
+                <%= button_tag type: "submit" do %>
+                  <i class="far fa-comments"></i> コメントする
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>
+
+</div>
+
+    <% end %>
+  
+
+
+
+</div>
+
+    

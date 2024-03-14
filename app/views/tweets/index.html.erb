@@ -1,0 +1,65 @@
+<%= link_to "新規投稿ページへ", new_tweet_path %>
+<%= link_to "ログイン", tweets_path %>
+<%= link_to "新規登録", new_user_registration_path %>
+
+<h3>投稿一覧</h3>
+<%= link_to "新規投稿へ", new_tweet_path %>
+<div class="tweets-container">
+  
+  <% @tweet.each do |t| %>
+      <% if t.user.present? %>
+        <%= t.user.email %>
+      <% end %>
+    <div class="tweet">
+     <% if t.user %>
+      <%= t.user.email %>
+     <% else %>
+      <!-- ユーザーが存在しない場合の処理 -->
+      <p>ユーザー情報がありません</p>
+     <% end %>
+      <%= t.body %>
+      <% if user_signed_in? %>
+      <% if current_user.already_gooded?(t) %>
+          <%= link_to tweet_good_path(id: t.id, tweet_id: t.id), method: :delete do %>
+              <p>いいねを取り消す</p><%= t.goods.count %>
+          <% end %>
+      <% else %>
+          <%= link_to tweet_goods_path(id: t.id, tweet_id: t.id), method: :post do %>
+              <p>いいね</p><%= t.goods.count %>
+              <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+          <% end %>
+      <% end %>
+     <% else %>
+      <p>いいねの数 = </p><%= t.goods.count %>
+    </div>
+    <% end %>
+  <div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% if @letters.present? %>
+    <% @letters.each do |c| %>
+      <div>
+        <%= c.user.email unless c.user.blank? %>
+        <br>
+        <%= c.content %>
+      </div>
+      <br>
+    <% end %>
+  <% end %>
+
+  <% if user_signed_in? %>
+  <%= form_with(model: [@tweets, @letter], local: true) do |f| %>
+    <%= f.text_area :content %>
+    <%= button_tag type: "submit" do %>
+      <i class="far fa-comments"></i> コメントする
+    <% end %>
+  <% end %>
+<% end %>
+</div>
+
+      <%= t.created_at %>
+      <%= link_to "詳細へ", tweet_path(t.id) %>
+      <%= link_to "編集する", edit_tweet_path(t.id) %>
+      <%= button_to "削除する", tweet_path(t.id), method: :delete %> 
+  <% end %>   
+  
+</div>

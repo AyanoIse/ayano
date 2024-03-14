@@ -1,0 +1,48 @@
+<div class="explain1">
+  <br>
+  <br>
+  <%= image_tag 'tweet.new.jpg', class:'tweet-image' %>
+  <div class="new">
+   <br>
+   <br>
+   <h2>|新規投稿|</h2>
+   <br>
+   <br>
+   一週間続いた！
+   <br>
+   <br>
+   一ヶ月続いた！
+   <br>
+   <br>
+   あなたの頑張りをみんなに共有してみましょう
+  </div>
+
+</div>
+
+
+<div class="box2">
+
+
+ <%= form_for @tweet do |f| %>
+  <div class="field1">
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <%= f.label :投稿 %>
+    <%= f.text_field :body, :size => 70 %>
+  </div>
+  <div class="submit">
+  <br>
+  <br>
+  <br>
+   <%= f.submit "投稿する" %>
+  </div>
+ <% end %>
+
+</div>
+<div class= "link2">
+<%= link_to "みんなの頑張り一覧に戻る", tweets_path %>
+</div>
+
