@@ -29,83 +29,83 @@
 </div>
 
 
-<div class="tweets-container">
+<div class="ohayo-box">
+
   
   <% @tweet.each do |t| %>
      
-    <div class="tweet">
-      <div class="personal5">
+    <div class="ohayo">
+      <div class="image3">
 
-        <div class="image4">
+        <div class="user-image">
           <%= image_tag t.user.image_url,size: "100x100" if t.user.image? %>
         </div>
       
         
-        <div class="personal4">
+        <div class="user">
           <%= link_to t.user.name, user_path(t.user.id) %>
         </div>
+     
       </div>
 
+      <%= t.body %>
 
-       <%= t.body %>
-      
-      
-      
-    </div>
-
-
-  <div  class="respond">   
+      <div  class="respond">   
      
-    <div class="ohayo-good">
-       <% if user_signed_in? %>
-          <% if current_user.already_gooded?(t) %>
-           <%= button_to tweet_good_path(id: t.id, tweet_id: t.id ), method: :delete do %>
-              <i class="far fa-heart like-btn" style="color:#e54747;"></i>
-              <%= t.goods.count %>
-           <% end %>
-          <% else %>
-            <%= button_to tweet_good_path(id: t.id, tweet_id: t.id), method: :post do %>
-              <i class="far fa-heart like-btn" style="color:#e54747;"></i>
-            <%= t.goods.count %>
-          <% end %>
-          <% end %>
-          <% else %>
-          <p>いいねの数 = </p><%= t.goods.count %>
-        <% end %>
-    </div>
-  
-    <div class="ohayo-comment">
-      <% if user_signed_in? %>
-          <%= form_with(model: [@tweets, @letter], local: true) do |f| %>
-            <%= f.text_area :content %>
-            <%= button_tag type: "submit" do %>
-              <i class="far fa-comments comment-btn" style="color:#262626"></i> コメントする
+        <div class="ohayo-good">
+          <% if user_signed_in? %>
+              <% if current_user.already_gooded?(t) %>
+              <%= button_to tweet_good_path(id: t.id, tweet_id: t.id ), method: :delete do %>
+                  <i class="far fa-heart like-btn" style="color:#e54747;"></i>
+                  <%= t.goods.count %>
+              <% end %>
+              <% else %>
+                <%= button_to tweet_goods_path(id: t.id, tweet_id: t.id), method: :post do %>
+                  <i class="far fa-heart like-btn" style="color:#e54747;"></i>
+                <%= t.goods.count %>
+              <% end %>
+              <% end %>
+              <% else %>
+              <p>いいねの数 = </p><%= t.goods.count %>
             <% end %>
-          <% end %>
-      <% end %>
-    </div>
- </div>
-
-  
-  <div class="comment-wrapper">
-
-
-
-    <div class="comment">
-      <br>
-      <p>｜コメント一覧｜</p>
-  
-      <%  @letters.each do |c| %>
-        <div>
-          <p><%= link_to c.user.name, user_path(c.user.id) %>:
-     
-          <%= c.content %></p>
         </div>
-       
-      <% end %>
-    </div>
-  </div>
-  <% end %> 
-  <p id="notice"><%= notice %></p>
+  
+        <div class="ohayo-comment">
+          <% if user_signed_in? %>
+              <%= form_with(model: [@tweets, @letter], local: true) do |f| %>
+                <%= f.text_area :content %>
+                <%= button_tag type: "submit" do %>
+                  <i class="far fa-comments comment-btn" style="color:#262626"></i> コメントする
+                <% end %>
+              <% end %>
+          <% end %>
+        </div>
 
+     
+      </div>
+
+      
+      <div class="comment-wrapper">
+
+
+
+        <div class="comment">
+          <br>
+          <p>｜コメント一覧｜</p>
+  
+          <%  t.letters.each do |c| %>
+            <div>
+              <p><%= link_to c.user.name, user_path(c.user.id) %>:
+     
+              <%= c.content %></p>
+            </div>
+       
+          <% end %>
+        </div>
+      
+ 
+      <p id="notice"><%= notice %></p>
+   </div>
+    </div>
+  <% end %> 
 </div>

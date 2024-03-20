@@ -71,19 +71,19 @@
      
      <div class="ohayo-good">
           <% if user_signed_in? %>
-        <% if current_user.already_liked?(@ohayo) %>
-          <%= link_to ohayo_likes_path(@ohayo), method: :delete do %>
+        <% if current_user.already_liked?(t) %>
+          <%= button_to ohayo_like_path(id: t.id, ohayo_id: t.id ), method: :delete do %>
             <i class="far fa-heart like-btn" style="color:#e54747;"></i>
-            <%= @ohayo.likes.count %>
+            <%= t.likes.count %>
           <% end %>
         <% else %>
-          <%= link_to ohayo_likes_path(@ohayo), method: :post do %>
+          <%= button_to ohayo_likes_path(id: t.id, ohayo_id: t.id ), method: :post do %>
             <i class="far fa-heart like-btn" style="color:#e54747;"></i>
-            <%= @ohayo.likes.count %>
+            <%= t.likes.count %>
           <% end %>
         <% end %>
         <% else %>
-          <p>いいねの数 = </p><%= @ohayo.likes.count %>
+          <p>いいねの数 = </p><%= t.likes.count %>
         <% end %>
      </div>
 
@@ -107,7 +107,7 @@
        <br>
        <p>｜コメント一覧｜</p>
      
-        <%  @comments.each do |c| %>
+        <%  t.comments.each do |c| %>
           <div>
            <p><%= link_to c.user.name, user_path(c.user.id) %>:
         
@@ -116,21 +116,11 @@
           
         <% end %>
      </div>
-
-  <p id="notice"><%= notice %></p>
+  
+    <p id="notice"><%= notice %></p>
 
   
-</div>
-
-
-
-
-
-
-
-         
-
-         
+  </div> 
    </div>  
   <% end %>
 </div>
