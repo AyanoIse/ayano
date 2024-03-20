@@ -26,6 +26,13 @@
   body {
     font-family: "ヒラギノ角ゴシック" "ＭＳ Ｐゴシック", arial;
   }
+
+.logo{
+  margin-top: 5%;
+  width: 400px;
+  height:180px;
+}
+
   header {
     background-color: white;
     height: 80px;

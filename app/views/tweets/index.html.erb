@@ -45,6 +45,19 @@
         <div class="user">
           <%= link_to t.user.name, user_path(t.user.id) %>
         </div>
+        <div class="links">
+        <div class="link-1">
+          <i class="fa-solid fa-pen-to-square edit-btn"style="color:#262626;" ></i>
+          <br>
+          <%= link_to "編集する", edit_tweet_path(t.id) %>
+           
+        </div>
+        <div class="link-2">
+         <i class="fa-solid fa-trash trash-btn"style="color:#262626;" ></i>
+         <br>
+         <%= link_to "削除する", tweet_path(t.id), method: :delete %>
+        </div>
+       </div>
      
       </div>
 
@@ -95,6 +108,7 @@
   
           <%  t.letters.each do |c| %>
             <div>
+              <%= c.user.email unless c.user.blank? %>
               <p><%= link_to c.user.name, user_path(c.user.id) %>:
      
               <%= c.content %></p>

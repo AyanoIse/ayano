@@ -53,7 +53,7 @@ class OhayosController < ApplicationController
   def update
     ohayo = Ohayo.find(params[:id])
     if ohayo.update(ohayo_params)
-      redirect_to :action => "show", :id => ohayo.id
+      redirect_to :action => "index", :id => ohayo.id
     else
       redirect_to :action => "new"
     end

@@ -56,7 +56,7 @@ class TweetsController < ApplicationController
     def update
         tweet = Tweet.find(params[:id])
         if tweet.update(tweet_params)
-          redirect_to :action => "show", :id => tweet.id
+          redirect_to :action => "index", :id => tweet.id
         else
           redirect_to :action => "new"
         end

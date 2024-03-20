@@ -17,6 +17,13 @@
     <%= f.text_area :name, autofocus: true, :size => "20x2" %>
   </div>
 
+  <div class="field4">
+        <br>
+        <%= f.label :プロフィール画像 %>
+        <br>
+        <%= f.file_field :image %>
+      </div>
+
   <div class="field">
   <br>
   <br>
@@ -31,7 +38,7 @@
   <br>
     <%= f.label :パスワード %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
@@ -49,7 +56,7 @@
   <div class="actions">
   <br>
   <br>
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録" %>
     <br>
     <br>
   </div>
