@@ -1,3 +1,132 @@
 // Place all the styles related to the ohayos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.morning1{
+    display:flex;
+    justify-content: center;
+}
+
+
+.ohayos-image{
+    width: 400px;
+    height: 300px;
+    margin-left: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    opacity: 0.7;
+}
+
+.name{
+    text-align: center;
+    margin-left: 30px;
+}
+
+.ohayo-link{
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.ohayo-box{
+
+    display: flex;
+    margin: 2em 0;
+    flex-wrap: wrap;
+    
+    
+}
+
+.personal3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.ohayo{
+    width: 400px;
+    border: 3px solid;
+    border-color: #D1EBD8;
+    margin-bottom: 10%;
+}
+
+.user{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.image3{
+    display:flex;
+    background: #f1f1f1;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.user-image{
+    margin-left: 10px;
+}
+.personal{
+    text-align: center;
+    padding: 15px 20px;
+    margin: 0;
+}
+
+.comment{
+    text-align: center;
+}
+
+.links{
+    display: flex;
+    margin-top: 70px;
+    margin-left: 50px;
+    
+}
+
+.link-2{
+    margin-left: 10px;
+}
+
+.respond{
+    display:flex;
+    margin-left: 10px;
+}
+
+.ohayo-comment{
+    margin-left: 10px;
+}
+
+.comment{
+    background: #f1f1f1;
+}
+
+.edit3{
+    border: 15px solid; /* 線の太さと可視化 */
+    border-top-left-radius: 30%; /* 左上を角丸に */
+    border-top-right-radius: 30%; /* 右上を角丸に */
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    border-color: #D1EBD8;
+    width:500px;
+    height: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+.edit4{
+    text-align: center;
+    margin-top: 10%;
+}
+
+.name-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+

@@ -1,21 +1,41 @@
-<%= form_for @ohayo do |f| %>
-    <%= f.label :起床時間 %>
-    <%= f.datetime_field :wake, :size => 140 %> 
-    <%= f.label :起床後の気分 %>
-    <%= f.select :feel,  
-    [["すっきり", "すっきり"], 
-    ["普通", "普通"], 
-    ["眠い", "眠い"]], include_blank: "選択して下さい" %>
-    <%= f.label :睡眠時間  %>
-    <%= f.number_field :sleep, :size => 10 %>
-    <%= f.label :布団から出るまでの時間 %>
-    <%= f.number_field :time, :size => 10 %>
-    <%= f.label :起きてやったこと  %>
-    <%= f.text_area :what, :size => "30x2" %>
 
-   
-    <%= f.label :start_time %>
-    <%= f.datetime_select :start_time %>
+<div class="edit3">
+  <div class="edit4">
+    <%= form_for @ohayo do |f| %>
+        <br>
+        <p>｜起床時間｜
+        <br>
+        <%= f.datetime_field :wake, :size => 140 %></p>
+        <br> 
+        <p>｜起床時の気分｜
+        <br>
+        <%= f.select :feel,  
+        [["すっきり", "すっきり"], 
+        ["普通", "普通"], 
+        ["眠い", "眠い"]], include_blank: "選択して下さい" %></p>
+        <br>
+        <p> ｜就寝時間｜
+        <br>
+        <%= f.number_field :sleep, :size => 10 %></p>
+        <br>
+        <p>｜布団からでるまでの時間｜
+        <br>
+        <%= f.number_field :time, :size => 10 %></p>
+        <br>
+        <p>｜起きてからやったこと｜
+        <br>
+        <%= f.text_area :what, :size => "30x5" %></p>
 
-    <%= f.submit "編集する" %>
-  <% end %>
+        <br>
+        <p>｜入力日時｜
+        <br>
+        <%= f.datetime_select :start_time %></p>
+        <br>
+        <%= f.submit "編集する" %>
+    <% end %>
+  </div>
+</div>
+
+  <br>
+  <br>
+  <%= link_to "投稿一覧に戻る", tweets_path, class:'link' %>

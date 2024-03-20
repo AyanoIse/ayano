@@ -1,78 +1,147 @@
-<div class="name">
- ｜早起き投稿一覧｜
+<div class="morning1">
+ 
+  <%= image_tag 'ohayos-back.jpg', class:'ohayos-image' %>
+    
+
+  <div class="name">
+    <div class="name-title">
+      ｜早起き投稿一覧｜
+    </div>
+    <br>
+    <br>
+    みんなの早起きを
+    <br>
+    <br>
+    いいねやコメントで
+    <br>
+    <br>
+    応援しましょう！
+  </div>
 </div>
-  
 
-<%= link_to "新規投稿ページへ", new_ohayo_path %>
-
-
-<div class="ohayos-container">
+<div class="ohayo-link">
+  <%= link_to "新規投稿ページへ ", new_ohayo_path, class:'link' %>/
   <% if user_signed_in? %>
-    <%= link_to "マイページへ", user_path(current_user.id) %>
+  <%= link_to "マイページへ", user_path(current_user.id) , class:'link'%>
   <% end %>
+</div>
 
-  <% @ohayos.each do |t| %>
-    <div class="ohayo">
-      <%= link_to t.user.name, user_path(t.user.id) %>
-      <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
-      <%= t.user.email %> 
-      <p>起床時間 <%= t.wake.strftime( "%H:%M") if t.wake.present?%></p>
-      
-      <p>就寝時間 <%= t.sleep.strftime( "%H:%M")if t.sleep.present? %></p>
-      
-      <p>布団出るまでにかかった時間<%= t.time %>分</p>
-      
-      <p>今日の気分→<%= t.feel %></p>
-      
-      <p>何したか→<%= t.what %></p>
-      
-      <%= t.likes.count %>
-      <% if user_signed_in? %>
-        <% if current_user.already_liked?(t) %>
-          <%= button_to ohayo_like_path(id: t.id, ohayo_id: t.id), method: :delete do %>
-              <p>いいねを取り消す</p><%= t.likes.count %>
+
+
+<div class="ohayo-box">
+ <% @ohayos.each do |t| %>
+
+   <div class="ohayo">
+          <div class="image3">
+            <div class="user-image">
+             <%= image_tag t.user.image_url,size: "100x100" if t.user.image? %>
+            </div>
+            <div class="user">
+              <%= link_to t.user.name, user_path(t.user.id) %>
+            </div>
+
+            <div class="links">
+            <div class="link-1">
+              <i class="fa-solid fa-pen-to-square edit-btn"style="color:#262626;" ></i>
+              <br>
+              <%= link_to "編集する", edit_ohayo_path(@ohayo.id) %>
+               
+            </div>
+            <div class="link-2">
+             <i class="fa-solid fa-trash trash-btn"style="color:#262626;" ></i>
+             <br>
+             <%= link_to "削除する", ohayo_path(t.id), method: :delete %>
+            </div>
+          </div>
+         
+          
+          </div>
+
+         
+           
+     
+          <div class="personal">
+           <p>起床時間 : <%= t.wake.strftime( "%H:%M") if t.wake.present?%></p>
+           <p>就寝時間 : <%= t.sleep.strftime( "%H:%M")if t.sleep.present? %></p>
+           <p>布団から出るまでの時間 : <%= t.time if t.time.present? %></p>
+           <p>起床時の気分 : <%= t.feel if t.feel.present? %></p>
+           <p>起きて何したか : <%= t.what if t.what.present? %></p>
+          </div>
+  <div  class="respond">   
+     
+     <div class="ohayo-good">
+          <% if user_signed_in? %>
+        <% if current_user.already_liked?(@ohayo) %>
+          <%= link_to ohayo_likes_path(@ohayo), method: :delete do %>
+            <i class="far fa-heart like-btn" style="color:#e54747;"></i>
+            <%= @ohayo.likes.count %>
           <% end %>
         <% else %>
-          <%= button_to ohayo_likes_path(id: t.id, ohayo_id: t.id), method: :post do %>
-              <p>いいね</p><%= t.likes.count %>
+          <%= link_to ohayo_likes_path(@ohayo), method: :post do %>
+            <i class="far fa-heart like-btn" style="color:#e54747;"></i>
+            <%= @ohayo.likes.count %>
           <% end %>
         <% end %>
-      <% else %>
-       <p>いいねの数 = </p><%= t.likes.count %>
+        <% else %>
+          <p>いいねの数 = </p><%= @ohayo.likes.count %>
+        <% end %>
+     </div>
+
+    <div class="ohayo-comment">
+      <% if user_signed_in? %>
+         <%= form_with(model: [@ohayo, @comment], local: true) do |f| %>
+            <%= f.text_area :content %>
+            <%= button_tag type: "submit" do %>
+              <i class="far fa-comments comment-btn" style="color:#262626"></i> コメントする
+            <% end %>
+         <% end %>
       <% end %>
+    </div>
+  </div>
+
+    <div class="comment-wrapper">
+   
+
+
+     <div class="comment">
+       <br>
+       <p>｜コメント一覧｜</p>
      
-      <%= link_to "詳細へ", ohayo_path(t.id) %>
-      
+        <%  @comments.each do |c| %>
+          <div>
+           <p><%= link_to c.user.name, user_path(c.user.id) %>:
+        
+            <%= c.content %></p>
+          </div>
+          
+        <% end %>
+     </div>
+
+  <p id="notice"><%= notice %></p>
+
   
-
-        <div class="comment-wrapper">
-            <p>コメント一覧</p>
-            <% @comments.each do |c| %>
-              <div>
-                <%= c.user.email unless c.user.blank? %>
-                <br>
-                <%= c.content %>
-              </div>
-                <br>
-            <% end %>
-
-            <% if user_signed_in? %>
-              <%= form_with(model: [@ohayo, @comment], local: true) do |f| %>
-                <%= f.text_area :content %>
-                <%= button_tag type: "submit" do %>
-                  <i class="far fa-comments"></i> コメントする
-                <% end %>
-              <% end %>
-            <% end %>
-        </div>
-
 </div>
 
-    <% end %>
+
+
+
+
+
+
+         
+
+         
+   </div>  
+  <% end %>
+</div>
+
+<%= link_to "投稿一覧に戻る", ohayos_path, class:'link' %>
+
+
+
   
 
 
 
-</div>
 
-    
+

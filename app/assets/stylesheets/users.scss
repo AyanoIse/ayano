@@ -19,7 +19,10 @@
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     opacity: 0.7;
+    
 }
+
+
 
 .my{
     text-align: center;
@@ -27,9 +30,13 @@
    
 }
 
+.mypage-title{
+    font-size: 20px;
+    font-weight: bold;
+}
 .calendar{
-    width: 1300px;
-    height: 1200px;
+    width: 1250px;
+    height: 1150px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -39,10 +46,113 @@
 }
 
 .record{
+   margin-left: auto;
+   margin-right: auto;
    text-align: center;
-   margin-top: 20%;
+   width: 1250px;
+   margin-top: 8%;
+   background-color: rgba($color: #D1EBD8, $alpha: 0.4);
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+   border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+   font-size: 20px;
+   font-weight: bold;
 }
 
 .my2{
-    background-color: #9DA697;
+  
+    display: flex;
+   
 }
+
+.image-my{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-left: 15%;
+}
+
+.profile{
+    margin-top: 9%;
+    margin-left: 10%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.edit-link1{
+    margin-top: 12.5%;
+    margin-left: 3%;
+}
+
+.tweet-all{
+    text-align: center;
+    margin-top: 20%;
+    
+}
+
+.your{
+    background-color: rgba($color: #D1EBD8, $alpha: 0.4);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.line{
+    text-align: center;
+    background-color: rgba($color: #D1EBD8, $alpha: 0.4);
+    width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.edit-user{
+    border: 15px solid; /* 線の太さと可視化 */
+    border-top-left-radius: 30%; /* 左上を角丸に */
+    border-top-right-radius: 30%; /* 右上を角丸に */
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    border-color: #D1EBD8;
+    width:600px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+.user-detail{
+    text-align: center;
+    margin-top: 8%;
+}
+
+.your-tweets{
+    border: 15px solid; /* 線の太さと可視化 */
+    border-top-left-radius: 30%; /* 左上を角丸に */
+    border-top-right-radius: 30%; /* 右上を角丸に */
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    border-color: #D1EBD8;
+    width:300px;
+    height:200px;
+}
+
+.tweets-line{
+    margin-top: 5%;
+    justify-content: center;
+    display:flex
+}
+
+.your-tweets1{
+    margin-top: 50px;
+    text-align: center;
+}
+

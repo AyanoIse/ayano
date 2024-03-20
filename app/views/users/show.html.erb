@@ -7,7 +7,7 @@
   <div class="my">
     <br>
     <br>
-    <h1>|マイページ|</h1>
+    <div class="mypage-title">|マイページ|</div>
     <br>
     <br>
     あなたの頑張りだけが表示されます
@@ -16,23 +16,40 @@
   </div>
 </div>
 
+<div class="line">
+   ｜プロフィール｜
+</div>
+
 <div class="my2">
- <p>名前 : <%= @user.name %></p>
- <p>メールアドレス : <%= @user.email %></p>
- <p>プロフィール : <%= @user.profile %></p>
-
- <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
-
- <% if current_user.id == @user.id %>
-   <%= link_to "編集する", edit_user_registration_path %>
- <% end %>
+  
+ <div class="image-my">
+   <br>
+   <br>
+   <br>
+   <br>
+   <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+ </div>
+ <div class="profile">
+   名前 : <%= @user.name %>
+   <br>
+   <br>
+   プロフィール : <%= @user.profile %>
+ </div>
+ 
+ <div class="edit-link1">
+   <% if current_user.id == @user.id %>
+     <%= link_to "編集する", edit_user_registration_path %>
+   <% end %>
+ </div>
 </div>
 
 <div class="record">
- <h2>|あなたの早起き記録|</h2>
+ |あなたの早起き記録|
 </div>
 
 <div class="calendar">
+  <br>
+  <br>
   <%= month_calendar events: @user.ohayos do |date, ohayos| %>
     <%= date.day %>
 </div>
@@ -52,22 +69,28 @@
    <% end %>
 <% end %>
 
+<div class="tweet-all">
+  <div class="your">
+    <h2>|あなたの投稿一覧|</h2>
+    
+  </div>
 
-<h2>ユーザーの投稿一覧</h2>
-<% @user.ohayos.each do |t| %>
   
-<% end %>
+   <div class="tweets-line">
+      <% @user.tweets.each do |t| %>
 
-
-<h2>ユーザーがいいねした投稿一覧</h2>
-<% @user.liked_ohayos.each do |t| %>
-  <%= t.user.name %>
-  <%= t.wake %>
-  <%= t.sleep %>
-  <%= t.time %>
-  <%= t.feel %>
-  <%= t.what %>
+        <div class="your-tweets">
+           <div class="your-tweets1">
+             <%= t.created_at %>
+             <br>
+             <%= t.body %>
+           </div>
+        </div>
   
-<% end %>
+      <% end %>
+   </div>
+</div>
 
-<%= link_to "投稿一覧に戻る", ohayos_path %>
+
+
+<%= link_to "投稿一覧に戻る", ohayos_path, class:'link' %>

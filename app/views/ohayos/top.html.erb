@@ -4,16 +4,14 @@
 
 <section id="second-block">
   <p class="info-title">
-      |サイトについて|
+      ｜サイトについて｜
   </p>
   <div class="about-container">
     <span class="front-small">
     このサイトは朝活を応援しているサイトです。
     <br>
     <br>
-    お仕事や勉強、部活やサークルなど日々やることがたくさん、、
-    <br>
-    時間が足りない、、
+    日々やることがたくさんで時間が足りない、、
     <br>
     早寝早起きを習慣にしたいけど続かない、、
     <br>
@@ -25,7 +23,10 @@
     「日々をより生産的で健康に」。
     <br>
     <br>
-    目標達成のために一緒にちょっとの早起き頑張りませんか？
+    このサイトで記録と投稿をして
+    <br>
+    <br>
+    ちょっとの早起きを皆さんで習慣化しましょう
     </span>
   </p>
 </section>
@@ -52,7 +53,7 @@
     <%= image_tag 'left-back.jpg', class:'left-image' %>
     <br>
     <br>
-    <%= link_to "早起き投稿", ohayos_path, class:'link' %>
+    <%= link_to "みんなの早起き投稿", ohayos_path, class:'link' %>
     <br>
     <%= link_to "投稿する", new_ohayo_path, class:'link' %>
    </div>
@@ -62,7 +63,7 @@
    <br>
    <br>
    <% if user_signed_in? %>
-     <%= link_to "マイページへ", user_path(current_user.id) %>
+     <%= link_to "マイページへ", user_path(current_user.id), class:'link'  %>
    <% end %>
    </div>
 
@@ -72,9 +73,9 @@
    <%= image_tag 'right-back.jpg', class:'right-image' %>
    <br>
    <br>
-   <%= link_to "みんなの頑張り", tweets_path %>
+   <%= link_to "みんなの自由投稿一覧", tweets_path, class:'link' %>
     <br>
-    <%= link_to "投稿する", new_tweet_path %>
+    <%= link_to "投稿する", new_tweet_path, class:'link' %>
    </div>
    
 

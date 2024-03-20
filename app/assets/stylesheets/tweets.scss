@@ -1,3 +1,158 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.tweet-title{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 10%;
+    margin-top: 30px;
+}
+
+.tweets-image{
+    width: 400px;
+    height: 300px;
+    margin-left: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    opacity: 0.7;
+}
+
+.tweet-detail{
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.tweet-link{
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.tweet{
+    width: 400px;
+    border: 3px solid;
+    border-color: #D1EBD8;
+    margin-bottom: 10%;
+    
+}
+
+.personal5{
+    display: flex;
+    background-color: #f1f1f1;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.image4{
+    margin-left: 10px;
+}
+
+.personal4{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+
+
+
+
+.tweets-container{
+    display: flex;
+    margin: 2em 0;
+    flex-wrap: wrap;
+}
+
+.tweet1{
+    margin-top: 10%;
+    position: relative;
+    padding: 0.6em;
+    background:  #D1EBD8;
+    width: 400px;
+    height: 300px;
+    margin-left: 15%;
+    margin-top: 5%;
+    border-radius: 30%; /* 左上を角丸に */
+    text-align: center;
+}
+
+.tweet1:after{
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 150px;
+    border: 30px solid transparent;
+    border-top: 30px solid #D1EBD8;
+    width: 0;
+    height: 0;  
+}
+
+.letter-wrapper{
+    margin-top: 10%;
+    position: relative;
+    padding: 0.6em;
+    background:  #D1EBD8;
+    width: 400px;
+    height: 400px;
+    margin-left: 60%;
+    margin-top: 5%;
+    border-radius: 30%; /* 左上を角丸に */
+    text-align: center;
+    
+}
+
+.letter-wrapper:after{
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 250px;
+    border: 30px solid transparent;
+    border-top: 30px solid #D1EBD8;
+    width: 0;
+    height: 0;  
+}
+
+.tweet2{
+    margin-top: 10%;
+}
+
+.edit1{
+    border: 15px solid; /* 線の太さと可視化 */
+    border-top-left-radius: 30%; /* 左上を角丸に */
+    border-top-right-radius: 30%; /* 右上を角丸に */
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    border-color: #D1EBD8;
+    width:500px;
+    height: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+.edit2{
+    text-align: center;
+    margin-top: 20%;
+}
+
+.tweet-title2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#tweet_body{
+    width: 300px;
+    height: 150px;
+}
+
+.personal4{
+    font-size: 20px;
+    font-weight: bold;
+}

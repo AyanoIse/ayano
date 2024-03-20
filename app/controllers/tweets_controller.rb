@@ -14,6 +14,9 @@ class TweetsController < ApplicationController
       end
       @letter = Letter.new
 
+      
+
+
 
     
     end
